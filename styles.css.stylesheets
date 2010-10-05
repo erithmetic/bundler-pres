@@ -3,7 +3,7 @@ h1, h2, h3 {
 }
 img { 
   display: block;
-  margin: 0 10%;
+  margin: 0 25%;
 }
 div.highlight, pre {
   margin-bottom: 5%;

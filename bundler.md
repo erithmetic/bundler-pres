@@ -44,14 +44,14 @@
     > script/console
     config/environment.rb:3:in `require': 
       no such file to load -- nokogiri (LoadError)
-      from myscript.rb:3:in `<main>'
+      from config/environment.rb:3:in `<main>'
 
     > gem install nokogiri
     ...
     > ruby myscript.rb
     config/environment.rb:4:in `require': 
       no such file to load -- timecop (LoadError)
-      from myscript.rb:4:in `<main>'
+      from config/environment.rb:4:in `<main>'
     > gem install timecop
     ...
 
@@ -112,6 +112,21 @@
     gem 'nokogiri', '>= 1.5.2'
     gem 'capybara'
     gem 'rspec',    '~> 1.3.0'  # spermy!
+@@@
+
+!SLIDE
+
+# Bundler is only upon request
+
+@@@ ruby
+    # myapp.rb
+    
+    require 'rubygems'
+    require 'bundler'
+
+    Bundler.setup
+
+    require 'nokogiri'
 @@@
 
 !SLIDE
@@ -179,7 +194,7 @@
 @@@ ruby
     # Gemfile
 
-    gemspec, :path => 'myproject.gemspec'
+    gemspec, :path => '.'
 @@@
 
 !SLIDE
@@ -254,7 +269,7 @@
 
 # Thank you!
 
-* * *
+![Bomb](normal_dr_strangelove0111.jpg)
 
 #### Derek Kastner
   * @dkastner

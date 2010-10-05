@@ -4919,14 +4919,14 @@ jQuery.extend( jQuery.easing,
               <h1>The old days</h1><pre><code>&gt; script/console
 config/environment.rb:3:in `require': 
   no such file to load -- nokogiri (LoadError)
-  from myscript.rb:3:in `&lt;main&gt;'
+  from config/environment.rb:3:in `&lt;main&gt;'
 
 &gt; gem install nokogiri
 ...
 &gt; ruby myscript.rb
 config/environment.rb:4:in `require': 
   no such file to load -- timecop (LoadError)
-  from myscript.rb:4:in `&lt;main&gt;'
+  from config/environment.rb:4:in `&lt;main&gt;'
 &gt; gem install timecop
 ...
 </code></pre>
@@ -4950,7 +4950,7 @@ Missing the 'nokogiri' gem, please
               <h1>Trouble</h1><pre><code>&gt; rake gems:install
 &gt; script/console
 can't activate nokogiri (= 1.5.3), 
-  already activated'
+  already activated
 </code></pre>
             </div>
           </div>
@@ -4965,7 +4965,7 @@ can't activate nokogiri (= 1.5.3),
         
           <div class="">
             <div id="slide-10" class="content">
-              <h1>Brighter Planet gems:</h1><pre><code>&gt; git clone git://github.com/brighterplanet/flight.git
+              <h1>Brighter Planet gems</h1><pre><code>&gt; git clone git://github.com/brighterplanet/flight.git
 &gt; cd flight
 # hack, hack, hack
 &gt; bundle install
@@ -5000,6 +5000,20 @@ can't activate nokogiri (= 1.5.3),
         
           <div class="">
             <div id="slide-13" class="content">
+              <h1>Bundler is only upon request</h1><div class="highlight ruby code highlight"><pre><span class="c1"># myapp.rb</span>
+
+<span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s1">'bundler'</span>
+
+<span class="no">Bundler</span><span class="o">.</span><span class="n">setup</span>
+
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-14" class="content">
               <h1>Git and local filesystem gem sources</h1><div class="highlight ruby code highlight"><pre><span class="c1"># Gemfile</span>
 
 <span class="n">gem</span> <span class="s1">'earth'</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s1">'../earth'</span>
@@ -5009,7 +5023,7 @@ can't activate nokogiri (= 1.5.3),
           </div>
         
           <div class="">
-            <div id="slide-14" class="content">
+            <div id="slide-15" class="content">
               <h1>Manages dependency conflicts</h1><ul>
 <li>Prevents "activation" errors</li>
 <li>Ensure correct environment</li>
@@ -5019,13 +5033,13 @@ can't activate nokogiri (= 1.5.3),
           </div>
         
           <div class="">
-            <div id="slide-15" class="content">
+            <div id="slide-16" class="content">
               <h1>Extra tools</h1>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-16" class="content">
+            <div id="slide-17" class="content">
               <h1>Extra tools: bundle exec</h1><pre><code>&gt; gem list cucumber
 
 *** LOCAL GEMS ***
@@ -5041,7 +5055,7 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-17" class="content">
+            <div id="slide-18" class="content">
               <h1>Extra tools</h1><ul>
 <li>bundle console</li>
 <li>bundle viz</li>
@@ -5051,13 +5065,13 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-18" class="content">
+            <div id="slide-19" class="content">
               <h1>Gemfile tricks</h1>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-19" class="content">
+            <div id="slide-20" class="content">
               <h1>Gemfile tricks: gemspec</h1><div class="highlight ruby code highlight"><pre><span class="c1"># myproject.gemspec</span>
 
 <span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
@@ -5067,13 +5081,13 @@ cucumber (0.6.2, 0.9.0)
 <span class="k">end</span>
 </pre></div><div class="highlight ruby code highlight"><pre><span class="c1"># Gemfile</span>
 
-<span class="n">gemspec</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s1">'myproject.gemspec'</span>
+<span class="n">gemspec</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s1">'.'</span>
 </pre></div>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-20" class="content">
+            <div id="slide-21" class="content">
               <h1>Gemfile tricks: env</h1><div class="highlight ruby code highlight"><pre><span class="c1"># Gemfile</span>
 
 <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">'LOCAL_EARTH'</span><span class="o">]</span>
@@ -5092,7 +5106,7 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-21" class="content">
+            <div id="slide-22" class="content">
               <h1>But, but, but...</h1><ul>
 <li>Bundler is SLOW</li>
 <li>Version conflicts are annoying</li>
@@ -5101,7 +5115,7 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-22" class="content">
+            <div id="slide-23" class="content">
               <h1>Bundler is slow</h1><ul>
 <li>Use ruby 1.9</li>
 <li>Use a local gem cache</li>
@@ -5110,7 +5124,7 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-23" class="content">
+            <div id="slide-24" class="content">
               <h1>Local gem cache</h1><pre><code>&gt; mkdir -p ~/local_gems/gems
 &gt; cp `gem env gemdir`/cache/*.gem ~/local_gems/gems
 &gt; cd ~/local_gems
@@ -5121,7 +5135,7 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-24" class="content">
+            <div id="slide-25" class="content">
               <h1>Local gem cache</h1><div class="highlight ruby code highlight"><pre><span class="c1"># Gemfile</span>
 
 <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">'LOCAL_GEM_SERVER'</span><span class="o">]</span>
@@ -5136,7 +5150,7 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-25" class="content">
+            <div id="slide-26" class="content">
               <h1>Version conflicts are annoying</h1><ul>
 <li>Use flexible version requirements
 
@@ -5150,9 +5164,8 @@ cucumber (0.6.2, 0.9.0)
           </div>
         
           <div class="">
-            <div id="slide-26" class="content">
-              <h1>Thank you!</h1><hr>
-<h4>Derek Kastner</h4><ul>
+            <div id="slide-27" class="content">
+              <h1>Thank you!</h1><p><img src="normal_dr_strangelove0111.jpg" alt="Bomb"></p><h4>Derek Kastner</h4><ul>
 <li>@dkastner</li>
 <li>http://github.com/dkastner</li>
 </ul>
